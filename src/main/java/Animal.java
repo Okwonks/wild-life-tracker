@@ -8,6 +8,8 @@ public abstract class Animal {
     public String name;
     public String type;
     public int id;
+    public String health;
+    public String age;
 
     public String getName() {
         return name;
@@ -17,6 +19,14 @@ public abstract class Animal {
         return id;
     }
 
+    public String getHealth() {
+        return health;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
     @Override
     public boolean equals(Object otherAnimal) {
         if (!(otherAnimal instanceof Animal)) {
@@ -24,16 +34,20 @@ public abstract class Animal {
         } else {
             Animal newAnimal = (Animal) otherAnimal;
             return this.getName().equals(newAnimal.getName()) &&
-                   this.getId() == newAnimal.getId();
+                   this.getId() == newAnimal.getId() &&
+                   this.getHealth().equals(newAnimal.getHealth()) &&
+                   this.getAge().equals(newAnimal.getAge());
         }
     }
 
     public void save() {
         try (Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO animals (name, type) VALUES (:name, :type)";
+            String sql = "INSERT INTO animals (name, type, health, age) VALUES (:name, :type, :health, :age)";
             this.id = (int) con.createQuery(sql, true)
               .addParameter("name", this.name)
               .addParameter("type", this.type)
+              .addParameter("health", this.health)
+              .addParameter("age", this.age)
               .executeUpdate()
               .getKey();
         }

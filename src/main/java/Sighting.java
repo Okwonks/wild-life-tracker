@@ -1,5 +1,6 @@
 import org.sql2o.*;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public class Sighting {
     private String rangerName;
@@ -7,7 +8,7 @@ public class Sighting {
     private int id;
     private int animalId;
 
-    public Sighting(int animalId, String location, String rangerName) {
+    public Sighting(String location, String rangerName, int animalId) {
         this.rangerName = rangerName;
         this.location = location;
         this.animalId = animalId;
@@ -22,7 +23,7 @@ public class Sighting {
     }
 
     public int getAnimalId() {
-        return 90;
+        return animalId;
     }
 
     public int getId() {
@@ -42,10 +43,11 @@ public class Sighting {
 
     public void save() {
         try (Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO sightings (location, rangerName) VALUES (:location, :rangerName)";
+            String sql = "INSERT INTO sightings (location, rangerName, animalId) VALUES (:location, :rangerName, :animalId)";
             this.id = (int) con.createQuery(sql, true)
               .addParameter("location", this.location)
               .addParameter("rangerName", this.rangerName)
+              .addParameter("animalId", this.animalId)
               .executeUpdate()
               .getKey();
         }

@@ -1,14 +1,17 @@
 import java.util.List;
 import org.sql2o.*;
+/**
+ * This class deals with animals considered safe
+ * the DATABASE_TYPE defines the animal type as safe
+ */
 
 public class SafeAnimal extends Animal{
     public static final String DATABASE_TYPE = "safe";
 
-    public SafeAnimal(String name, String health, String age) {
+    public SafeAnimal(String name, String health) {
         this.name = name;
         type = DATABASE_TYPE;
         this.health = health;
-        this.age = age;
     }
 
     public static List<SafeAnimal> all() {

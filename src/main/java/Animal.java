@@ -10,6 +10,7 @@ public abstract class Animal {
     public int id;
     public String health;
     public String age;
+    // public int animalAge;
 
     public String getName() {
         return name;
@@ -24,6 +25,13 @@ public abstract class Animal {
     }
 
     public String getAge() {
+        // if (animalAge <= 1) {
+        //     age = "newborn";
+        // } else if (animalAge <= 4) {
+        //     age = "young";
+        // } else {
+        //     age = "old";
+        // }
         return age;
     }
 

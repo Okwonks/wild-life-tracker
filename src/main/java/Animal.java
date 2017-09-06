@@ -35,7 +35,7 @@ public abstract class Animal {
             Animal newAnimal = (Animal) otherAnimal;
             return this.getName().equals(newAnimal.getName()) &&
                    this.getId() == newAnimal.getId() &&
-                   this.getHealth().equals(newAnimal.getHealth()) &&
+                   this.getHealth().equals(newAnimal.getHealth()) &&                                    
                    this.getAge().equals(newAnimal.getAge());
         }
     }

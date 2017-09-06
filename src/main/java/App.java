@@ -87,7 +87,15 @@ public class App {
 
         //Post method for the sighting of an animal
         post("/sighting", (request, response) -> {
-            
-        });
+            Map<String, Object> model = new HashMap<String, Object>();
+
+            String location = request.queryParams("location");
+            String rangerName = request.queryParams("ranger");
+            Integer animalId = Integer.parseInt(request.queryParams("animalId"));
+            Sighting newSighting = new Sighting(location, rangerName, animalId);
+            newSighting.save();
+            model.put("template", "templates/new-sighting.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
     }
 }

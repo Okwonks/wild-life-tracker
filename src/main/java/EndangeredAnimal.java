@@ -1,9 +1,13 @@
 import java.util.List;
-
 import org.sql2o.*;
 
+/**
+ * Animals considered endangered fall under this class
+ * The class will deal with the special cases of the class
+ */
+
 public class EndangeredAnimal extends Animal {
-    public static final String DATABASE_TYPE = "endangered";
+    public static final String DATABASE_TYPE = "endangered"; //This is to diffrenciate between endangered and sfe animals
     public EndangeredAnimal(String name, String health, String age) {
         this.name = name;
         type = DATABASE_TYPE;

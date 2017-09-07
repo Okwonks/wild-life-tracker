@@ -1,0 +1,45 @@
+<!-- This will hold the forms that will submit the animals to the DB.
+     Two seperate forms for the two seperate animal types to be stored in the DB -->
+<div class="row p-2" id="animal-form">
+    <div class="col-md-6 offset-md-3">
+        <div class="row">
+            <!-- Safe Animals -->
+            <div class="col col-4">
+            <h3>Non-Endangered Animls</h3>
+                <form action="/animals" method="post">
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="name" name="name" placeholder="Animal Name">
+                    </div>
+
+                    <button class="btn btn-outline-primary" type="submit">Add animal</button>
+                </form>
+            </div>
+
+            <!-- Endangered Animals -->
+            <div class="col col-4">
+                <h3>Endangered Animals</h3>
+                <form action="/animals" method="post">
+                    <div class="form-group">
+                        <input class="form-control" type="text" id="name" name="name" placeholder="Endangered Animal Name"> 
+                    </div>
+                    <div class="form-group">
+                        <label for="health">Animal Health</label>
+                        <select name="health" id="health" type="text" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                            <option value="healthy">Healthy</option>
+                            <option value="ill">Ill</option>
+                            <option value="okay">Okay</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Animal age</label>
+                        <select name="age" id="age" type="text" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                            <option value="newborn">0 to 5 months</option>
+                            <option value="young">6 months to 2 years</option>
+                            <option value="old">Over 2 years</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -46,7 +46,7 @@ public class App {
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 
-        post("/animals/", (request, response) -> {
+        post("/animals", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
 
             String age = request.queryParams("age"); //This will help in filtering out the animals.
@@ -95,6 +95,18 @@ public class App {
             Sighting newSighting = new Sighting(location, rangerName, animalId);
             newSighting.save();
             model.put("template", "templates/new-sighting.vtl");
+            return new ModelAndView(model, layout);
+        }, new VelocityTemplateEngine());
+
+        get("/animals/animal_id/sighting/:id", (request, response) -> {
+            Map<String, Object> model = new HashMap<String, Object>();
+            EndangeredAnimal endangeredAnimal = EndangeredAnimal.find(Integer.parseInt(request.params(":id")));
+            SafeAnimal safeAnimal = SafeAnimal.find(Integer.parseInt(request.params(":id")));
+            Sighting sighting = Sighting.find(Integer.parseInt(request.params(":id")));
+            model.put("endangeredAnimal", endangeredAnimal);
+            model.put("safeAnimal", safeAnimal);
+            model.put("sighting", sighting);
+            model.put("template", "templates/sighting");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
     }

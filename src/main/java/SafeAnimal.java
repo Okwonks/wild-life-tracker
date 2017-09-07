@@ -34,4 +34,16 @@ public class SafeAnimal extends Animal{
         }
     }
     
+    @Override
+    public void save() {
+        try (Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name, type, health) VALUES (:name, :type, :health)";
+            this.id = (int) con.createQuery(sql, true)
+              .addParameter("name", this.name)
+              .addParameter("type", this.type)
+              .addParameter("health", this.health)
+              .executeUpdate()
+              .getKey();
+        }
+    }
 }

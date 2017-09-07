@@ -8,7 +8,15 @@
             <h3>Non-Endangered Animls</h3>
                 <form action="/animals" method="post">
                     <div class="form-group">
-                        <input class="form-control" type="text" id="name" name="name" placeholder="Animal Name">
+                        <input class="form-control" type="text" id="animal" name="animal" placeholder="Animal Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="health">Animal Health</label>
+                        <select name="health" id="health" type="text" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+                            <option value="healthy">Healthy</option>
+                            <option value="ill">Ill</option>
+                            <option value="okay">Okay</option>
+                        </select>
                     </div>
 
                     <button class="btn btn-outline-primary" type="submit">Add animal</button>

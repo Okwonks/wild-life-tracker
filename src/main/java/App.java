@@ -42,7 +42,7 @@ public class App {
 
         get("/animals/new", (request, response) -> {
             Map<String, Object> model = new HashMap<String, Object>();
-            model.put("template", "templates/animal-sighted-form.vtl");
+            model.put("template", "templates/add-animal-form.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 

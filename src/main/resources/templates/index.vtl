@@ -1,0 +1,42 @@
+<h1>Wildlife Tracker</h1>
+<hr>
+
+<div class="row">
+    <div class="col col-6">
+        <h2>In order to track the movements of animals and their life.</h2>
+        <h3>This helps in planning the goings on around your park</h3>
+    </div>
+    <div class="col col-4 offset-md-2">
+        <h2>Have you sighted an animal?</h2>
+        <h3>Fill out this form:</h3>
+        <form action="/sighting" method="post">
+            <div class="form-group">
+                <label for="animalId">Animal seen</label>
+                <select name="animalId" id="animalId" type="text">
+                    #foreach ($endangeredAnimal in $endangeredAnimals)
+                        <option value="$animal.getAnimalId()" class="form-control">$animal.geName()</option>
+                    #end
+                    #foreach ($safeAnimal in $safeAnimals)
+                        <option value="$animal.getAnimalId()" class="form-control">$animal.geName()</option>
+                    #end
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="location">Location seen</label>
+                <select name="location" id="location" type="text">
+                    <option value="location" class="form-control">North Quadrant</option>
+                    <option value="location" class="form-control">East Quadrant</option>
+                    <option value="location" class="form-control">West Quadrant</option>
+                    <option value="location" class="form-control">South Quadrant</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="rangerName">Ranger Name:</label>
+                <input id="rangerName" name="rangerName" type="text" class="form-control">
+            <div>
+
+            <button class="btn btn-outline-success" type="submit">Sight animal</button>
+        </form>
+    </div>
+
+</div>

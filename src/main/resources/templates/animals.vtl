@@ -1,0 +1,45 @@
+<div class="page-header">
+    <h1>Animals Around</h1>
+    <hr>
+</div>
+<div class="row">
+    
+        <div class="card-columns">
+            <div class="card">
+                <img class="card-img-top img-fluid" src="/images/elephant.jpg" alt="animal image">
+                <div class="card-block">
+                    <h4>Keep our animals safe!</h4>
+                    <p class="card-text">Join our rangers and help us sport the different animals we have</p>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img img-fluid" src="/images/lions.jpg" alt="Animal image">
+            </div>
+            <div class="card p-3">
+                <blockquote class="card-block card-blockquote">
+                    <p>Did you know, lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                    <footer>
+                        <small class="text-muted">The animal lover <cite title="John Doe">John Doe</cite></small>
+                    </footer>
+                </blockquote>
+            </div>
+            #foreach ($endangeredAnimal in $endangeredAnimals)
+                <div class="card">
+                    <div class="card-block">
+                        <h4>$endangeredAnimal.getName()</h4>
+                        <p>Animal health: $endangeredAnimal.getHealth()</p>
+                        <p>Animal age: $endangeredAnimal.getAge()</p>
+                    </div>
+                </div>
+            #end
+            #foreach ($safeAnimal in $safeAnimals)
+                <div class="card">
+                    <div class="card-block">
+                        <h4>$safeAnimal.getName()</h4>
+                        <p>Animal health: $safeAnimal.getHealth()</p>
+                    </div>
+                </div>
+            #end
+        </div>
+    
+</div>

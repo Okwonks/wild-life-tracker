@@ -1,12 +1,13 @@
 import org.sql2o.*;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
+import java.sql.Timestamp;
 
 public class Sighting {
     private String rangerName;
     private String location;
     private int id;
     private int animalId;
+    private Timestamp timeSpotted;
 
     public Sighting(String location, String rangerName, int animalId) {
         this.rangerName = rangerName;
@@ -20,6 +21,10 @@ public class Sighting {
 
     public String getLocation() {
         return location;
+    }
+
+    public Timestamp getTimeSpotted() {
+        return timeSpotted;
     }
 
     public int getAnimalId() {
@@ -43,7 +48,7 @@ public class Sighting {
 
     public void save() {
         try (Connection con = DB.sql2o.open()) {
-            String sql = "INSERT INTO sightings (location, rangerName, animalId) VALUES (:location, :rangerName, :animalId)";
+            String sql = "INSERT INTO sightings (location, rangerName, animalId, timespotted) VALUES (:location, :rangerName, :animalId, now())";
             this.id = (int) con.createQuery(sql, true)
               .addParameter("location", this.location)
               .addParameter("rangerName", this.rangerName)

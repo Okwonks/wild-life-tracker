@@ -63,7 +63,7 @@ public class App {
                 EndangeredAnimal newAnimal = new EndangeredAnimal(animalName, health, age);
                 newAnimal.save();
             }
-            model.put("template", "templates/added-animal.vtl");
+            model.put("template", "templates/animals.vtl");
             return new ModelAndView(model, layout);
         }, new VelocityTemplateEngine());
 

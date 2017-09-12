@@ -1,5 +1,8 @@
 import org.junit.*;
 import static org.junit.Assert.*;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.util.Date;
 
 /**
  * SightingTest this class tests the sighting of an animal.
@@ -76,5 +79,14 @@ public class SightingTest {
         testSighting.save();
         Sighting savedSighting = Sighting.find(testSighting.getId());
         assertEquals(savedSighting.getAnimalId(), testEndangeredAnimal.getId());
+    }
+
+    @Test
+    public void save_recordsTimeSpottedIntoTheDatabase() {
+        Sighting testSighting = new Sighting("North", "Jones", 1);
+        testSighting.save();
+        Timestamp savedSighting = Sighting.find(testSighting.getId()).getTimeSpotted();
+        Timestamp rightNow = new Timestamp(new Date().getTime());
+        assertEquals(DateFormat.getDateTimeInstance().format(rightNow), DateFormat.getDateTimeInstance().format(savedSighting));
     }
 }
